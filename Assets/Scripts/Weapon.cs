@@ -2,23 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
+public abstract class Weapon : MonoBehaviour
 {
+    [Range(0, 3)] public float fireRate = 0.5f;
+    [Range(1, 100)] public float angle = 10.0f;
+    public int ammoMax = 100;
     public GameObject bullet;
 
-    void Start()
-    {
-        
-    }
+    protected float fireTimer = 0;
+    protected int ammo = 100;
+
+    public abstract bool Fire(Vector3 position, Vector3 direction);
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            GameObject gameObject = Instantiate(this.bullet, transform.position, Quaternion.identity);
-            gameObject.GetComponent<Bullet>().Fire(ray.direction);
-        }
+        fireTimer += Time.deltaTime;
     }
 }
