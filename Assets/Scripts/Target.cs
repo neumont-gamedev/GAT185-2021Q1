@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-<<<<<<< HEAD
     public int points = 100;
+	public float lifespan = 5.0f;
     public Material material;
 
 	private void Start()
 	{
 		GetComponent<Renderer>().material = material;
+		Destroy(gameObject, lifespan);
 	}
 
 	private void OnCollisionEnter(Collision collision)
@@ -19,18 +20,12 @@ public class Target : MonoBehaviour
 		{
 			// add score to game
 			Game.Instance.AddPoints(points);
+			Destroy(gameObject);
 		}
 	}
 
-=======
-	public int Score = 100;
-
-	private void OnCollisionEnter(Collision collision)
+	public void Done()
 	{
-		//if (collision.gameObject.CompareTag("Projectile"))
-		{
-			Game.Instance.AddScore(Score);
-		}
+		Debug.Log("Done!");
 	}
->>>>>>> 524de3bf71b08893570fef47ff86d4982b7edc79
 }
