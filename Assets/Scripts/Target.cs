@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
+<<<<<<< HEAD
     public int points = 100;
     public Material material;
 
@@ -21,4 +22,15 @@ public class Target : MonoBehaviour
 		}
 	}
 
+=======
+	public int Score = 100;
+
+	private void OnCollisionEnter(Collision collision)
+	{
+		//if (collision.gameObject.CompareTag("Projectile"))
+		{
+			Game.Instance.AddScore(Score);
+		}
+	}
+>>>>>>> 524de3bf71b08893570fef47ff86d4982b7edc79
 }
