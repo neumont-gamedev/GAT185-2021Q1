@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3635726859140988317}
-  - component: {fileID: 2264790273423237828}
+  - component: {fileID: 6782306913385243116}
   - component: {fileID: 7955986851968366083}
   m_Layer: 0
   m_Name: AnimTarget
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2264790273423237828
+--- !u!114 &6782306913385243116
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c12681325bf37ac459042062b9d34726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroyGameObject: {fileID: 7262405795966813875}
 --- !u!95 &7955986851968366083
 Animator:
   serializedVersion: 3

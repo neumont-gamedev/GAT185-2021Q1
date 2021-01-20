@@ -17,9 +17,14 @@ public class Target : MonoBehaviour
 	{
 		if (collision.gameObject.CompareTag("Projectile"))
 		{
+			Destroy(collision.gameObject, 1);
+
 			// add score to game
 			Game.Instance.AddPoints(points);
-			Destroy(destroyGameObject);
+			if (destroyGameObject != null)
+			{
+				Destroy(destroyGameObject);
+			}
 		}
 	}
 
