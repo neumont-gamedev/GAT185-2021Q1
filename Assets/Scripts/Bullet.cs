@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
 {
 	[Range(0, 5)] public float lifespan = 1;
     [Range(1, 100)] public float speed = 10.0f;
+    [Range(-180, 180)] public float angle = 0.0f;
 
 	private void Start()
 	{
@@ -16,6 +17,8 @@ public class Bullet : MonoBehaviour
 	public void Fire(Vector3 forward)
     {
         Rigidbody rigidbody = GetComponent<Rigidbody>();
-        rigidbody.AddForce(forward * speed, ForceMode.VelocityChange);
+        //rigidbody.AddForce(forward * speed, ForceMode.VelocityChange);
+        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.right);
+        rigidbody.AddForce(rotation * forward * speed, ForceMode.VelocityChange);
     }
 }

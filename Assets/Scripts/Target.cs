@@ -5,12 +5,14 @@ using UnityEngine;
 public class Target : MonoBehaviour
 {
     public int points = 100;
+	public float lifespan = 5.0f;
     public Material material;
 	public GameObject destroyGameObject;
 
 	private void Start()
 	{
 		GetComponent<Renderer>().material = material;
+		Destroy(gameObject, lifespan);
 	}
 
 	private void OnCollisionEnter(Collision collision)
@@ -28,4 +30,8 @@ public class Target : MonoBehaviour
 		}
 	}
 
+	public void Done()
+	{
+		Debug.Log("Done!");
+	}
 }
