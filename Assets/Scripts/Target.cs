@@ -6,6 +6,7 @@ public class Target : MonoBehaviour
 {
     public int points = 100;
     public Material material;
+	public GameObject destroyGameObject;
 
 	private void Start()
 	{
@@ -18,6 +19,7 @@ public class Target : MonoBehaviour
 		{
 			// add score to game
 			Game.Instance.AddPoints(points);
+			Destroy(destroyGameObject);
 		}
 	}
 
