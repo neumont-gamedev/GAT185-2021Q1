@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class Game : MonoBehaviour
@@ -8,6 +9,8 @@ public class Game : MonoBehaviour
 	public int Score { get; set; } = 0;
 	public TextMeshProUGUI scoreUI;
 	public TextMeshProUGUI timerUI;
+	public GameObject startScreen;
+	public AudioSource music;
 
 	static Game instance = null;
 
@@ -21,6 +24,8 @@ public class Game : MonoBehaviour
 		GameOver
 	}
 
+	public eState State { get; set; } = eState.StartGame; 
+
 	private void Awake()
 	{
 		instance = this;
@@ -28,8 +33,35 @@ public class Game : MonoBehaviour
 
 	private void Update()
 	{
-		timer -= Time.deltaTime;
-		timerUI.text = string.Format("{0:D2}", (int)timer);
+		switch (State)
+		{
+			case eState.Title:
+				startScreen.SetActive(true);
+				break;
+			case eState.StartGame:
+				timer = 90;
+				Score = 0;
+				music.Play();
+				startScreen.SetActive(false);
+				State = eState.Game;
+				break;
+			case eState.Game:
+				timer -= Time.deltaTime;
+				timerUI.text = string.Format("{0:D2}", (int)timer);
+				if (timer <= 0)
+				{
+					music.Stop();
+					State = eState.GameOver;
+				}
+				break;
+			case eState.GameOver:
+				break;
+			default:
+				break;
+		}
+
+
+
 	}
 
 	public static Game Instance
@@ -44,5 +76,10 @@ public class Game : MonoBehaviour
 	{
 		Score += points;
 		scoreUI.text = string.Format("{0:D4}", Score);
+	}
+
+	public void StartGame()
+	{
+		State = eState.StartGame;
 	}
 }

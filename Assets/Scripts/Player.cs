@@ -17,25 +17,12 @@ public class Player : MonoBehaviour
         //velocity.z = Input.GetAxis("Vertical");
 
         //if (Input.GetButtonDown("Jump")) velocity.y = 40;
-
-
         //transform.position += velocity * speed * Time.deltaTime;
 
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1") && Game.Instance.State == Game.eState.Game)
 		{
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             weapons[0].Fire(ray.origin, ray.direction);
         }
-
-        transform.position += velocity * speed * Time.deltaTime;
-
-        // weapon
-        if (Input.GetButton("Fire1"))
-		{
-            // get weapon direction
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            weapons[0].Fire(ray.origin, ray.direction);
-		}
     }
 }

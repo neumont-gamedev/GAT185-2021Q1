@@ -5,7 +5,7 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     [Range(0, 3)] public float fireRate = 0.5f;
-    [Range(1, 100)] public float angle = 10.0f;
+    [Range(0, 100)] public float angle = 10.0f;
     public int ammoMax = 100;
     public GameObject bullet;
 
